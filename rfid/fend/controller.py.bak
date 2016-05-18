@@ -1,0 +1,17 @@
+#!/bin/python3
+from subprocess import Popen, PIPE
+import time
+import webbrowser
+
+control_W_sequence = b'''keydown Control_L
+key W
+keyup Control_L
+'''
+
+def keypress(sequence):
+    p = Popen(['xte'], stdin=PIPE)
+    p.communicate(input=sequence)
+
+keypress(control_W_sequence)
+webbrowser.open_new_tab("http://python.org")
+
